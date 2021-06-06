@@ -22,7 +22,7 @@ def merge_sort(lista):
         # Copy data to temp arrays L[] and R[]
         while i < len(parte_esquerda) and j < len(parte_direita):
             comparacoes += 1
-            if int(parte_esquerda[i][0]) < int(parte_direita[j][0]):
+            if float(parte_esquerda[i][2]) < float(parte_direita[j][2]):
                 lista[k] = parte_esquerda[i]
                 trocas += 1
                 i += 1
@@ -48,10 +48,11 @@ def merge_sort(lista):
 
 # Driver Code
 if __name__ == '__main__':
-    from verificaOrdem import verificar
-    from ArquivoToList import organizarEmSublistas
+    from Ferramentas.verificaOrdem import verificar
+    from Ferramentas.ArquivoToList import organizarEmSublistas
 
-    arr = organizarEmSublistas("/Users/alexecheverria/Documents/ProgramasPython/AED/data_generation/desordenado/desordenado2.dat")[1:]
+    arr = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/data_generation/desordenado"
+                               "/desordenado1.dat")[1:]
     merge_sort(arr)
     print("Lista organizada?:", verificar(arr))
     print("Trocas:", trocas)

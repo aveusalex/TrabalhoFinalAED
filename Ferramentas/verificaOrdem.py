@@ -3,7 +3,7 @@ def verificar(lista):
         if i+1 == len(lista):
             return True
 
-        if int(lista[i+1][0]) - int(lista[i][0]) < 0:
+        if float(lista[i+1][2]) - float(lista[i][2]) < 0:
             return False
 
 

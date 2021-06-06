@@ -15,7 +15,7 @@ def insertion_sort(lista:list):
 
         while not fim_da_passada:
             contador_secundario -= 1
-            valor_sendo_comparado = int(lista[contador][0])
+            valor_sendo_comparado = float(lista[contador][2])
 
             # contador secundario anda da direita para a esquerda, comparando os valores anteriores
             comparacoes += 1
@@ -41,12 +41,13 @@ def insertion_sort(lista:list):
 
 
 if __name__ == '__main__':
-    from verificaOrdem import verificar
-    from ArquivoToList import organizarEmSublistas
+    from Ferramentas.verificaOrdem import verificar
+    from Ferramentas.ArquivoToList import organizarEmSublistas
 
     a_ordenar = [5, 17, 11, 6, 6, 6, 6, 6, 7]
 
-    lista = organizarEmSublistas("/Users/alexecheverria/Documents/ProgramasPython/AED/data_generation/desordenado/desordenado2.dat")[1:]
+    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/data_generation/"
+                                 "desordenado/desordenado1.dat")[1:]
     tupla = insertion_sort(lista)
     print(tupla[0])
     print("Lista esta ordenada?:", verificar(tupla[0]))
