@@ -79,7 +79,6 @@ if __name__ == '__main__':
     quicksort(lista[0], 0, len(lista[0])-1, lista[1])
     fim = datetime.now()
     tempo_exec = fim - inicio
-    print(lista[0])
 
     print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", trocas)

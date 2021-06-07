@@ -62,8 +62,8 @@ if __name__ == '__main__':
     inicio = datetime.now()
     merge_sort(arr[0], arr[1])
     fim = datetime.now()
-    tempo_exec = (fim - inicio)
-    print(arr[0])
+    tempo_exec = fim - inicio
+
     print("Lista organizada?:", verificar(arr[0], arr[1]))
     print("Trocas:", trocas)
     print("Comparacoes:", comparacoes)
