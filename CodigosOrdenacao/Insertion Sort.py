@@ -1,5 +1,4 @@
-import time
-
+from datetime import datetime
 
 def insertion_sort(lista:list, indice_score):
     """Retorna a lista organizada, a quantidade de trocas e a quantidade de comparacoes efetuadas. """
@@ -49,16 +48,13 @@ if __name__ == '__main__':
     from os import getcwd, chdir
 
     chdir("..")
-    lista = organizarEmSublistas(getcwd() + '/desordenado2.dat')
-    inicio = time.time()
+    lista = organizarEmSublistas(getcwd() + '/data_generation/desordenado/desordenado1.dat')
+    inicio = datetime.now()
     tupla = insertion_sort(lista[0], lista[1])
-    fim = time.time()
+    fim = datetime.now()
     tempo_exec = (fim - inicio)/60
     print(tupla[0])
     print("Lista esta ordenada?:", verificar(tupla[0]))
     print("Trocas:", tupla[1])
     print("Comparacoes:", tupla[2])
-    if tempo_exec >= 60:
-        print(f"Tempo em minutos: {tempo_exec/60:.4f}")
-    else:
-        print(f"Tempo em segundos: {tempo_exec:.4f}")
+    print(f"Tempo de execução: {tempo_exec}")

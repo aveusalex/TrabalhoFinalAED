@@ -1,4 +1,5 @@
-import time
+from datetime import datetime
+
 comparacoes = 0
 trocas = 0
 
@@ -73,18 +74,15 @@ if __name__ == '__main__':
     from os import getcwd, chdir
 
     chdir("..")
-    lista = organizarEmSublistas(getcwd()+'/desordenado2.dat')
-    inicio = time.time()
-
+    lista = organizarEmSublistas(getcwd()+'/data_generation/desordenado/desordenado1.dat')
+    inicio = datetime.now()
     quicksort(lista[0], 0, len(lista[0])-1, lista[1])
-    fim = time.time()
-    tempo_exec = (fim - inicio)
+    fim = datetime.now()
+    tempo_exec = fim - inicio
     print(lista[0])
+
     print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", trocas)
     print("Comparacoes:", comparacoes)
+    print(f"Tempo de execução: {tempo_exec}")
 
-    if tempo_exec >= 60:
-        print(f"Tempo em minutos: {tempo_exec/60:.4f}")
-    else:
-        print(f"Tempo em segundos: {tempo_exec:.4f}")
