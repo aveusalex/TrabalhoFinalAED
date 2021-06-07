@@ -1,9 +1,12 @@
+import time
+
 trocas = 0
 comparacoes = 0
+tempo_execucao = 0
 
 
 def merge_sort(lista, indice_score=2):
-    global trocas, comparacoes
+    global trocas, comparacoes, tempo_execucao
     # Por causa da recursao, a condicional serve como ponto de parada, ou seja, quando a lista tiver apenas 1 elemento
     # a recursao deve parar.
     if len(lista) > 1:
@@ -54,10 +57,16 @@ if __name__ == '__main__':
 
     # Neste caso, o mergesort teve 784,464 trocas e 718,614 comparações.
     # O quicksort teve, no mesmo caso, 148,366 trocas e 1,984,775 comparações->Mais indicado para ordenacao em disco.
-    #arr = organizarEmSublistas('/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat')
-    #merge_sort(arr[0], arr[1])
-    #print(arr[0])
-    #print("Lista organizada?:", verificar(arr[0], arr[1]))
-    #print("Trocas:", trocas)
-    #print("Comparacoes:", comparacoes)
-
+    arr = organizarEmSublistas('/Users/heloi/PycharmProjects/pythonProject/TrabalhoFinalAED/data_generation/desordenado/desordenado1.dat')
+    inicio = time.time()
+    merge_sort(arr[0], arr[1])
+    fim = time.time()
+    tempo_exec = (fim - inicio)
+    print(arr[0])
+    print("Lista organizada?:", verificar(arr[0], arr[1]))
+    print("Trocas:", trocas)
+    print("Comparacoes:", comparacoes)
+    if tempo_exec >= 60:
+        print(f"Tempo em minutos: {tempo_exec/60:.4f}")
+    else:
+        print(f"Tempo em segundos: {tempo_exec:.4f}")
