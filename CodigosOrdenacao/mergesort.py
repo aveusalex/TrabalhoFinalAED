@@ -50,12 +50,14 @@ def merge_sort(lista, indice_score=2):
 if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
+    from os import getcwd
 
     # Neste caso, o mergesort teve 784,464 trocas e 718,614 comparações.
     # O quicksort teve, no mesmo caso, 148,366 trocas e 1,984,775 comparações->Mais indicado para ordenacao em disco.
-    arr = organizarEmSublistas('/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat')
-    merge_sort(arr[0], arr[1])
-    print(arr[0])
-    print("Lista organizada?:", verificar(arr[0], arr[1]))
-    print("Trocas:", trocas)
-    print("Comparacoes:", comparacoes)
+    #arr = organizarEmSublistas('/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat')
+    #merge_sort(arr[0], arr[1])
+    #print(arr[0])
+    #print("Lista organizada?:", verificar(arr[0], arr[1]))
+    #print("Trocas:", trocas)
+    #print("Comparacoes:", comparacoes)
+
