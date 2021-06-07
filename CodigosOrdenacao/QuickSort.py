@@ -1,3 +1,7 @@
+comparacoes = 0
+trocas = 0
+
+
 def mediana(array, primeiro, segundo, terceiro):
     lista = [float(array[primeiro][2]), float(array[segundo][2]), float(array[terceiro][2])]
     lista.sort()
@@ -10,6 +14,7 @@ def mediana(array, primeiro, segundo, terceiro):
 
 
 def particao(Array, esquerda, direita):
+    global comparacoes, trocas
     # Seleção do pivô. O pivô será o elemento A[esquerda].
     pivo = Array[esquerda]
     # Particionamento do arranjo.
@@ -18,12 +23,14 @@ def particao(Array, esquerda, direita):
     while i <= j:
         # Encontra elemento maior que o pivo.
         while Array[i][2] <= pivo[2]:
+            comparacoes += 1
             i += 1
             if i == direita:
                 break
 
         # Encontra elemento menor que o pivo.
         while Array[j][2] >= pivo[2]:
+            comparacoes += 1
             j -= 1
             if j == esquerda:
                 break
@@ -34,11 +41,13 @@ def particao(Array, esquerda, direita):
 
         # Troca elementos encontrados acima de lugar.
         Array[i], Array[j] = Array[j], Array[i]
+        trocas += 1
 
     # Coloca o pivo no lugar certo.
     aux = Array[j]
     Array[j] = pivo
     Array[esquerda] = aux
+    trocas += 1
 
     # j é o índice em que o pivo agora está.
     return j
@@ -67,5 +76,5 @@ if __name__ == '__main__':
     quicksort(lista, 0, len(lista)-1)
     print("Lista organizada?:", verificar(lista))
     # implementar as trocas
-    #print("Trocas:", trocas)
-    #print("Comparacoes:", comparacoes)
+    print("Trocas:", trocas)
+    print("Comparacoes:", comparacoes)
