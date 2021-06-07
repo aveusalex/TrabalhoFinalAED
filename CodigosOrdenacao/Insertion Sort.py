@@ -1,3 +1,4 @@
+import time
 def insertion_sort(lista:list, indice_score):
     """Retorna a lista organizada, a quantidade de trocas e a quantidade de comparacoes efetuadas. """
 
@@ -44,9 +45,16 @@ if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
 
-    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat")
+    lista = organizarEmSublistas("/Users/heloi/PycharmProjects/pythonProject/TrabalhoFinalAED/data_generation/desordenado/desordenado1.dat")
+    inicio = time.time()
     tupla = insertion_sort(lista[0], lista[1])
+    fim = time.time()
+    tempo_exec = (fim - inicio)/60
     print(tupla[0])
     print("Lista esta ordenada?:", verificar(tupla[0]))
     print("Trocas:", tupla[1])
     print("Comparacoes:", tupla[2])
+    if tempo_exec >= 60:
+        print(f"Tempo em minutos: {tempo_exec/60:.4f}")
+    else:
+        print(f"Tempo em segundos: {tempo_exec:.4f}")
