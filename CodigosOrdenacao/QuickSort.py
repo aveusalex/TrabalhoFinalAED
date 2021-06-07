@@ -13,7 +13,7 @@ def mediana(array, primeiro, segundo, terceiro):
         return terceiro
 
 
-def particao(Array, esquerda, direita):
+def particao(Array, esquerda, direita, indice_score):
     global comparacoes, trocas
     # Seleção do pivô. O pivô será o elemento A[esquerda].
     pivo = Array[esquerda]
@@ -22,14 +22,14 @@ def particao(Array, esquerda, direita):
     j = direita
     while i <= j:
         # Encontra elemento maior que o pivo.
-        while Array[i][2] <= pivo[2]:
+        while Array[i][indice_score] <= pivo[indice_score]:
             comparacoes += 1
             i += 1
             if i == direita:
                 break
 
         # Encontra elemento menor que o pivo.
-        while Array[j][2] >= pivo[2]:
+        while Array[j][indice_score] >= pivo[indice_score]:
             comparacoes += 1
             j -= 1
             if j == esquerda:
@@ -53,7 +53,7 @@ def particao(Array, esquerda, direita):
     return j
 
 
-def quicksort(Array, esquerda, direita):
+def quicksort(Array, esquerda, direita, indice_score=2):
     if esquerda >= direita:
         return
 
@@ -62,19 +62,18 @@ def quicksort(Array, esquerda, direita):
     # Usa a mediana calculada como pivô.
     Array[esquerda], Array[m] = Array[m], Array[esquerda]
 
-    indice_pivo = particao(Array, esquerda, direita)
-    quicksort(Array, esquerda, indice_pivo - 1)
-    quicksort(Array, indice_pivo + 1, direita)
+    indice_pivo = particao(Array, esquerda, direita, indice_score)
+    quicksort(Array, esquerda, indice_pivo - 1, indice_score)
+    quicksort(Array, indice_pivo + 1, direita, indice_score)
 
 
 if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
 
-    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/data_generation/desordenado"
-                                 "/desordenado1.dat")[1:]
-    quicksort(lista, 0, len(lista)-1)
-    print("Lista organizada?:", verificar(lista))
-    # implementar as trocas
+    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat")
+    quicksort(lista[0], 0, len(lista[0])-1, lista[1])
+    print(lista[0])
+    print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", trocas)
     print("Comparacoes:", comparacoes)

@@ -15,7 +15,18 @@ def organizarEmSublistas(arquivo):
         linhas[aux] = novo_elemento
         aux += 1
 
-    return linhas
+    cabecalho = linhas[0]
+    indice_score = 0
+    for elemento in cabecalho:
+        if elemento == "SCORE":
+            break
+        elif indice_score == 2:
+            raise Exception
+        indice_score += 1
+
+    linhas.pop(0)
+
+    return linhas, indice_score
 
 
 if __name__ == '__main__':

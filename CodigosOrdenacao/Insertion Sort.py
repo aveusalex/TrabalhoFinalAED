@@ -1,4 +1,4 @@
-def insertion_sort(lista:list):
+def insertion_sort(lista:list, indice_score):
     """Retorna a lista organizada, a quantidade de trocas e a quantidade de comparacoes efetuadas. """
 
     assert len(lista) > 0
@@ -15,11 +15,11 @@ def insertion_sort(lista:list):
 
         while not fim_da_passada:
             contador_secundario -= 1
-            valor_sendo_comparado = float(lista[contador][2])
+            valor_sendo_comparado = float(lista[contador][indice_score])
 
             # contador secundario anda da direita para a esquerda, comparando os valores anteriores
             comparacoes += 1
-            if int(lista[contador_secundario][0]) <= valor_sendo_comparado or contador_secundario < 0:
+            if float(lista[contador_secundario][indice_score]) <= valor_sendo_comparado or contador_secundario < 0:
                 # verifica se o numero ja esta na posicao correta a fim de evitar trocas desnecessarias
                 if contador_secundario + 1 == contador:
                     fim_da_passada = True
@@ -44,11 +44,8 @@ if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
 
-    a_ordenar = [5, 17, 11, 6, 6, 6, 6, 6, 7]
-
-    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/data_generation/"
-                                 "desordenado/desordenado1.dat")[1:]
-    tupla = insertion_sort(lista)
+    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat")
+    tupla = insertion_sort(lista[0], lista[1])
     print(tupla[0])
     print("Lista esta ordenada?:", verificar(tupla[0]))
     print("Trocas:", tupla[1])
