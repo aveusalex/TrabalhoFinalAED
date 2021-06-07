@@ -1,4 +1,6 @@
 import time
+
+
 def insertion_sort(lista:list, indice_score):
     """Retorna a lista organizada, a quantidade de trocas e a quantidade de comparacoes efetuadas. """
 
