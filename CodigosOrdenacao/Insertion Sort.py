@@ -44,8 +44,10 @@ def insertion_sort(lista:list, indice_score):
 if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
+    from os import getcwd, chdir
 
-    lista = organizarEmSublistas("/Users/heloi/PycharmProjects/pythonProject/TrabalhoFinalAED/data_generation/desordenado/desordenado1.dat")
+    chdir("..")
+    lista = organizarEmSublistas(getcwd() + '/desordenado2.dat')
     inicio = time.time()
     tupla = insertion_sort(lista[0], lista[1])
     fim = time.time()
