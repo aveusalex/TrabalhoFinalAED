@@ -1,6 +1,6 @@
+import time
 comparacoes = 0
 trocas = 0
-
 
 def mediana(array, primeiro, segundo, terceiro):
     lista = [float(array[primeiro][2]), float(array[segundo][2]), float(array[terceiro][2])]
@@ -71,9 +71,17 @@ if __name__ == '__main__':
     from Ferramentas.verificaOrdem import verificar
     from Ferramentas.ArquivoToList import organizarEmSublistas
 
-    lista = organizarEmSublistas("/Users/alexecheverria/PycharmProjects/TrabalhoFinalAED/desordenado2.dat")
+    lista = organizarEmSublistas("/Users/heloi/PycharmProjects/pythonProject/TrabalhoFinalAED/data_generation/desordenado/desordenado1.dat")
+    inicio = time.time()
     quicksort(lista[0], 0, len(lista[0])-1, lista[1])
+    fim = time.time()
+    tempo_exec = (fim - inicio)
     print(lista[0])
     print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", trocas)
     print("Comparacoes:", comparacoes)
+
+    if tempo_exec >= 60:
+        print(f"Tempo em minutos: {tempo_exec/60:.4f}")
+    else:
+        print(f"Tempo em segundos: {tempo_exec:.4f}")
