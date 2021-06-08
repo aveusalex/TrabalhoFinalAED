@@ -4,6 +4,21 @@ from tkinter import ttk
 
 class Janelita:
 
+    def salvar(self, lista):
+        self.__ja_salvou = True
+
+        with open(self.__diretorio_salvamento.get(), "w") as file:
+            for elemento in lista:
+                aux = 0
+                for unidade in elemento:
+                    if not(aux == len(elemento)-1):
+                        elemento[aux] = unidade + " "
+                    else:
+                        elemento[aux] = unidade + "\n"
+                    aux += 1
+
+                file.writelines(elemento)
+
     def troca(self, info):
         if info == 1:
             self.__erro2.config(text="")
@@ -14,9 +29,15 @@ class Janelita:
         valida1 = self.__insert_sort.get()
         valida2 = self.__quick_sort.get()
         valida3 = self.__merge_sort.get()
+        valida4 = self.__deseja_salvar.get()
+
         if not(valida1 or valida2 or valida3):
             self.__erro2.config(text="Selecione ao menos um método de ordenação!")
             self.__janela.after(4000, self.troca, 1)
+
+        elif valida4 and not self.__diretorio_salvamento.get():
+            self.__erro1.config(text="Insira um diretório de salvamento válido!")
+            self.__janela.after(4000, self.troca, 2)
 
         else:
             self.ordenar()
@@ -40,7 +61,11 @@ class Janelita:
             quicksort(lista[0], 0, len(lista[0])-1, lista[1])
             self.__end = datetime.now()
             self.__tempo_qs = self.__end - self.__begin
-            print("quick:", lista[0])
+
+            # salvar em um arquivo:
+            if self.__deseja_salvar.get() and not self.__ja_salvou:
+                self.salvar(lista[0])
+
             # Implementar o retorno visual ao cliente
             # limpar a tela do tkinter
 
@@ -52,7 +77,11 @@ class Janelita:
             merge_sort(lista[0], lista[1])
             self.__end = datetime.now()
             self.__tempo_ms = self.__end - self.__begin
-            print("merge:", lista[0])
+
+            # salvar em um arquivo:
+            if self.__deseja_salvar.get() and not self.__ja_salvou:
+                self.salvar(lista[0])
+
             # Implementar o retorno visual ao cliente
 
         if self.__insert_sort.get():
@@ -63,8 +92,15 @@ class Janelita:
             tupla = insertion_sort(lista[0], lista[1])
             self.__end = datetime.now()
             self.__tempo_is = self.__end - self.__begin
-            print("insert:", tupla[0])
+
+            # salvar em um arquivo:
+            if self.__deseja_salvar.get() and not self.__ja_salvou:
+                self.salvar(tupla[0])
+
             # Implementar o retorno visual ao cliente
+
+        # retornar a variavel para o estado original a fim de conseguir fazer outro salvamento
+        self.__ja_salvou = False
 
     def __init__(self):
         self.__janela = tkinter.Tk()
@@ -73,6 +109,9 @@ class Janelita:
         self.__diretorio_carregamento = tkinter.StringVar()
         self.__deseja_salvar = tkinter.IntVar()
         self.__diretorio_salvamento = tkinter.StringVar()
+
+        # controle de salvamento para evitar salvar varias vezes:
+        self.__ja_salvou = False
 
         # variaveis booleanas (0 ou 1) para indicar quais algoritmos serão utilizados.
         self.__quick_sort = tkinter.IntVar()
@@ -111,7 +150,7 @@ class Janelita:
         self.__erro2.grid(row=8, column=0, padx=10, pady=10)
 
         ttk.Button(self.__janela, text='Ordenar!', command=self.check).grid(row=9, column=0, padx=10, pady=10)
-        ttk.Button(self.__janela, text='Cancelar').grid(row=9, column=1, padx=10, pady=10)
+        ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=9, column=1, padx=10, pady=10)
 
         self.__janela.mainloop()
 
