@@ -3,6 +3,7 @@ from datetime import datetime
 comparacoes = 0
 trocas = 0
 
+
 def mediana(array, primeiro, segundo, terceiro):
     lista = [float(array[primeiro][2]), float(array[segundo][2]), float(array[terceiro][2])]
     lista.sort()

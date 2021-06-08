@@ -49,7 +49,7 @@ if __name__ == '__main__':
     from os import getcwd, chdir
 
     chdir("..")
-    lista = organizarEmSublistas(getcwd() + '/data_generation/desordenado/desordenado1.dat')
+    lista = organizarEmSublistas(getcwd() + 'data_generation/desordenado/desordenado1.dat')
     inicio = datetime.now()
     tupla = insertion_sort(lista[0], lista[1])
     fim = datetime.now()
