@@ -4,7 +4,6 @@ from tkinter import ttk
 
 class Janelita:
 
-    # teste
     def janela_de_informacoes(self, info: dict):
         janela2 = tkinter.Tk()
 
