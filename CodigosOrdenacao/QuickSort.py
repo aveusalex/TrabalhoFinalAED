@@ -1,7 +1,4 @@
 from datetime import datetime
-from Ferramentas.verificaOrdem import verificar
-from Ferramentas.ArquivoToList import organizarEmSublistas
-from os import getcwd, chdir
 
 
 class QuickSort:
@@ -23,7 +20,7 @@ class QuickSort:
     def tempo_execucao(self):
         return self.__tempo_exec
 
-    def mediana(self,array, primeiro, segundo, terceiro):
+    def mediana(self, array, primeiro, segundo, terceiro):
         lista = [float(array[primeiro][2]), float(array[segundo][2]), float(array[terceiro][2])]
         lista.sort()
         if lista[1] == array[primeiro]:
@@ -33,22 +30,22 @@ class QuickSort:
         else:
             return terceiro
 
-    def particao(self,Array, esquerda, direita, indice_score):
+    def particao(self, array, esquerda, direita, indice_score):
         # Seleção do pivô. O pivô será o elemento A[esquerda].
-        pivo = Array[esquerda]
+        pivo = array[esquerda]
         # Particionamento do arranjo.
         i = esquerda
         j = direita
         while i <= j:
             # Encontra elemento maior que o pivo.
-            while Array[i][indice_score] <= pivo[indice_score]:
+            while array[i][indice_score] <= pivo[indice_score]:
                 self.__comparacoes += 1
                 i += 1
                 if i == direita:
                     break
 
             # Encontra elemento menor que o pivo.
-            while Array[j][indice_score] >= pivo[indice_score]:
+            while array[j][indice_score] >= pivo[indice_score]:
                 self.__comparacoes += 1
                 j -= 1
                 if j == esquerda:
@@ -59,45 +56,47 @@ class QuickSort:
                 break
 
             # Troca elementos encontrados acima de lugar.
-            Array[i], Array[j] = Array[j], Array[i]
+            array[i], array[j] = array[j], array[i]
             self.__trocas += 1
 
         # Coloca o pivo no lugar certo.
-        aux = Array[j]
-        Array[j] = pivo
-        Array[esquerda] = aux
+        aux = array[j]
+        array[j] = pivo
+        array[esquerda] = aux
         self.__trocas += 1
 
         # j é o índice em que o pivo agora está.
         return j
 
-    def quicksort(self, Array, esquerda, direita, indice_score=2):
+    def quicksort(self, array, esquerda, direita, indice_score=2):
         inicio = datetime.now()
         if esquerda >= direita:
             return
 
         # Calcula a mediana de três elementos.
-        m = self.mediana(Array, esquerda, (direita - esquerda) // 2, direita)
+        m = self.mediana(array, esquerda, (direita - esquerda) // 2, direita)
         # Usa a mediana calculada como pivô.
-        Array[esquerda], Array[m] = Array[m], Array[esquerda]
+        array[esquerda], array[m] = array[m], array[esquerda]
 
-        indice_pivo = self.particao(Array, esquerda, direita, indice_score)
-        self.quicksort(Array, esquerda, indice_pivo - 1, indice_score)
-        self.quicksort(Array, indice_pivo + 1, direita, indice_score)
+        indice_pivo = self.particao(array, esquerda, direita, indice_score)
+        self.quicksort(array, esquerda, indice_pivo - 1, indice_score)
+        self.quicksort(array, indice_pivo + 1, direita, indice_score)
 
         fim = datetime.now()
         self.__tempo_exec = fim - inicio
 
 
 if __name__ == '__main__':
+    from Ferramentas.verificaOrdem import verificar
+    from Ferramentas.ArquivoToList import organizarEmSublistas
+    from os import getcwd, chdir
     
     testequicksort = QuickSort()
     chdir("..")
-    lista = organizarEmSublistas(getcwd()+'/data_generation/desordenado/desordenado1.dat')
-    testequicksort.quicksort(lista[0], 0, len(lista[0])-1, lista[1])
+    lis = organizarEmSublistas(getcwd()+'/data_generation/desordenado/desordenado1.dat')
+    testequicksort.quicksort(lis[0], 0, len(lis[0]) - 1, lis[1])
 
-    print("Lista organizada?:", verificar(lista[0], lista[1]))
+    print("Lista organizada?:", verificar(lis[0], lis[1]))
     print("Trocas:", testequicksort.trocas)
     print("Comparacoes:", testequicksort.comparacoes)
     print(f"Tempo de execução: {testequicksort.tempo_execucao}")
-
