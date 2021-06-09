@@ -1,8 +1,17 @@
+import platform
 import tkinter
 from tkinter import ttk
 
 
 class Janelita:
+
+    def nome_arq(self):
+        nome = self.__diretorio_carregamento.get()
+        sistema = platform.system()
+        if sistema == "Windows":
+            return nome.split("\\")[-1]
+        else:
+            return nome.split("/")[-1]
 
     def janela_de_informacoes(self, info: dict):
         janela2 = tkinter.Tk()
@@ -13,8 +22,7 @@ class Janelita:
         # titulos do merge, quick e insertion
         if self.__quick_sort.get():
             ttk.Label(janela2, text="QuickSort:").grid(row=0, column=0, padx=100, pady=20)
-            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
-                                                                                                           column=0)
+            ttk.Label(janela2, text=f'Arquivo: {self.nome_arq()}').grid(row=1, column=0)
             ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=0)
             ttk.Label(janela2, text=f"Trocas: {info['quick'][0]}").grid(row=3, column=0)
             ttk.Label(janela2, text=f"Comparações: {info['quick'][1]}").grid(row=4, column=0)
@@ -23,8 +31,7 @@ class Janelita:
 
         if self.__merge_sort.get():
             ttk.Label(janela2, text="MergeSort:").grid(row=0, column=2, padx=100, pady=20)
-            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
-                                                                                                           column=2)
+            ttk.Label(janela2, text=f'Arquivo: {self.nome_arq()}').grid(row=1, column=2)
             ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=2)
             ttk.Label(janela2, text=f"Trocas: {info['merge'][0]}").grid(row=3, column=2)
             ttk.Label(janela2, text=f"Comparações: {info['merge'][1]}").grid(row=4, column=2)
@@ -33,8 +40,7 @@ class Janelita:
 
         if self.__insert_sort.get():
             ttk.Label(janela2, text="InsertionSort:").grid(row=0, column=4, padx=100, pady=20)
-            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
-                                                                                                           column=4)
+            ttk.Label(janela2, text=f'Arquivo: {self.nome_arq()}').grid(row=1, column=4)
             ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=4)
             ttk.Label(janela2, text=f"Trocas: {info['insertion'][0]}").grid(row=3, column=4)
             ttk.Label(janela2, text=f"Comparações: {info['insertion'][1]}").grid(row=4, column=4)

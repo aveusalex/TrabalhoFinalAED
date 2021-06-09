@@ -20,8 +20,9 @@ def organizarEmSublistas(arquivo):
     for elemento in cabecalho:
         if elemento == "SCORE":
             break
-        elif indice_score == 2:
-            raise Exception
+        elif indice_score == len(cabecalho) - 1:
+            indice_score = 2
+            break
         indice_score += 1
 
     linhas.pop(0)
@@ -30,5 +31,6 @@ def organizarEmSublistas(arquivo):
 
 
 if __name__ == '__main__':
-    lista = organizarEmSublistas("/Users/alexecheverria/Documents/ProgramasPython/AED/data_generation/desordenado/desordenado2.dat")
+    lista = organizarEmSublistas("/Users/alexecheverria/Documents/ProgramasPython/AED/"
+                                 "data_generation/desordenado/desordenado2.dat")
     print(lista[1:3])
