@@ -7,9 +7,21 @@ from os import getcwd, chdir
 class QuickSort:
 
     def __init__(self):
-        self.trocas = 0
-        self.comparacoes = 0
-        self.tempo_exec = 0
+        self.__trocas = 0
+        self.__comparacoes = 0
+        self.__tempo_exec = 0
+
+    @property
+    def trocas(self):
+        return self.__trocas
+
+    @property
+    def comparacoes(self):
+        return self.__comparacoes
+
+    @property
+    def tempo_execucao(self):
+        return self.__tempo_exec
 
     def mediana(self,array, primeiro, segundo, terceiro):
         lista = [float(array[primeiro][2]), float(array[segundo][2]), float(array[terceiro][2])]
@@ -30,14 +42,14 @@ class QuickSort:
         while i <= j:
             # Encontra elemento maior que o pivo.
             while Array[i][indice_score] <= pivo[indice_score]:
-                self.comparacoes += 1
+                self.__comparacoes += 1
                 i += 1
                 if i == direita:
                     break
 
             # Encontra elemento menor que o pivo.
             while Array[j][indice_score] >= pivo[indice_score]:
-                self.comparacoes += 1
+                self.__comparacoes += 1
                 j -= 1
                 if j == esquerda:
                     break
@@ -48,13 +60,13 @@ class QuickSort:
 
             # Troca elementos encontrados acima de lugar.
             Array[i], Array[j] = Array[j], Array[i]
-            self.trocas += 1
+            self.__trocas += 1
 
         # Coloca o pivo no lugar certo.
         aux = Array[j]
         Array[j] = pivo
         Array[esquerda] = aux
-        self.trocas += 1
+        self.__trocas += 1
 
         # j é o índice em que o pivo agora está.
         return j
@@ -74,7 +86,7 @@ class QuickSort:
         self.quicksort(Array, indice_pivo + 1, direita, indice_score)
 
         fim = datetime.now()
-        self.tempo_exec = fim - inicio
+        self.__tempo_exec = fim - inicio
 
 
 if __name__ == '__main__':
@@ -86,5 +98,5 @@ if __name__ == '__main__':
     print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", testequicksort.trocas)
     print("Comparacoes:", testequicksort.comparacoes)
-    print(f"Tempo de execução: {testequicksort.tempo_exec}")
+    print(f"Tempo de execução: {testequicksort.tempo_execucao}")
 

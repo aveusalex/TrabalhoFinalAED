@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6931a1a6-e6ea-4607-8779-37c3f9f643b3" name="Default Changelist" comment="" />
+    <list default="true" id="6931a1a6-e6ea-4607-8779-37c3f9f643b3" name="Default Changelist" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodigosOrdenacao/QuickSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/CodigosOrdenacao/QuickSort.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +37,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.QuickSortNew">
+  <component name="RunManager" selected="Python.QuickSort">
     <configuration name="Insertion Sort" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TrabalhoFinalAED" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.QuickSortNew" />
         <item itemvalue="Python.QuickSort" />
+        <item itemvalue="Python.QuickSortNew" />
         <item itemvalue="Python.janela" />
         <item itemvalue="Python.mergesort" />
         <item itemvalue="Python.Insertion Sort" />
@@ -170,6 +173,7 @@
       <workItem from="1623097361287" duration="63000" />
       <workItem from="1623101095153" duration="5312000" />
       <workItem from="1623197825281" duration="4032000" />
+      <workItem from="1623203424690" duration="376000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizado">
       <created>1623084855132</created>
@@ -192,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623105934231</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".">
+      <created>1623203495501</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623203495501</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,14 +224,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Atualizado" />
     <MESSAGE value="Atualização na medida do tempo de execução" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualização na medida do tempo de execução" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSort.coverage" NAME="QuickSort Coverage Results" MODIFIED="1623202733064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
+    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSort.coverage" NAME="QuickSort Coverage Results" MODIFIED="1623203685935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$ArquivoToList.coverage" NAME="ArquivoToList Coverage Results" MODIFIED="1623103966132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ferramentas" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$mergesort.coverage" NAME="mergesort Coverage Results" MODIFIED="1623105614183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$Insertion_Sort.coverage" NAME="Insertion Sort Coverage Results" MODIFIED="1623105512283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$janela.coverage" NAME="janela Coverage Results" MODIFIED="1623198213723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/interface" />
-    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSortNew.coverage" NAME="QuickSortNew Coverage Results" MODIFIED="1623202832380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
+    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSortNew.coverage" NAME="QuickSortNew Coverage Results" MODIFIED="1623203591331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
   </component>
 </project>
