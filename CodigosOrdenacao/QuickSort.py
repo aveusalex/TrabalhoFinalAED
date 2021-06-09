@@ -90,6 +90,7 @@ class QuickSort:
 
 
 if __name__ == '__main__':
+    
     testequicksort = QuickSort()
     chdir("..")
     lista = organizarEmSublistas(getcwd()+'/data_generation/desordenado/desordenado1.dat')
