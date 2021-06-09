@@ -1,6 +1,10 @@
 import platform
 import tkinter
 from tkinter import ttk
+from sys import setrecursionlimit
+
+
+setrecursionlimit(10**9)
 
 
 class Janelita:
