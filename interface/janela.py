@@ -4,6 +4,42 @@ from tkinter import ttk
 
 class Janelita:
 
+    def janela_de_informacoes(self, info:dict):
+        janela2 = tkinter.Tk()
+
+        janela2.title("Informações")
+        ttk.Separator(janela2, orient='vertical')
+
+        # titulos do merge, quick e insertion
+        if self.__quick_sort.get():
+            ttk.Label(janela2, text="QuickSort:").grid(row=0, column=0, padx=100, pady=20)
+            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
+                                                                                                           column=0)
+            ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=0)
+            ttk.Label(janela2, text=f"Trocas: {info['quick'][0]}").grid(row=3, column=0)
+            ttk.Label(janela2, text=f"Comparações: {info['quick'][1]}").grid(row=4, column=0)
+            ttk.Label(janela2, text=f"Tempo corrido: {self.__tempo_qs}").grid(row=5, column=0)
+            ttk.Separator(janela2, orient='vertical').grid(sticky='ns', row=0, rowspan=10, column=1)
+
+        if self.__merge_sort.get():
+            ttk.Label(janela2, text="MergeSort:").grid(row=0, column=2, padx=100, pady=20)
+            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
+                                                                                                           column=2)
+            ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=2)
+            ttk.Label(janela2, text=f"Trocas: {info['merge'][0]}").grid(row=3, column=2)
+            ttk.Label(janela2, text=f"Comparações: {info['merge'][1]}").grid(row=4, column=2)
+            ttk.Label(janela2, text=f"Tempo corrido: {self.__tempo_ms}").grid(row=5, column=2)
+            ttk.Separator(janela2, orient='vertical').grid(sticky='ns', row=0, rowspan=10, column=3)
+
+        if self.__insert_sort.get():
+            ttk.Label(janela2, text="InsertionSort:").grid(row=0, column=4, padx=100, pady=20)
+            ttk.Label(janela2, text=f'Arquivo: {self.__diretorio_carregamento.get().split("/")[-1]}').grid(row=1,
+                                                                                                           column=4)
+            ttk.Label(janela2, text=f'Tamanho do arquivo: {self.__tamanho_arquivo}').grid(row=2, column=4)
+            ttk.Label(janela2, text=f"Trocas: {info['insertion'][0]}").grid(row=3, column=4)
+            ttk.Label(janela2, text=f"Comparações: {info['insertion'][1]}").grid(row=4, column=4)
+            ttk.Label(janela2, text=f"Tempo corrido: {self.__tempo_is}").grid(row=5, column=4)
+
     def salvar(self, lista):
         self.__ja_salvou = True
 
@@ -51,24 +87,26 @@ class Janelita:
         path = self.__diretorio_carregamento.get()
         if path:
             lista = organizarEmSublistas(path)
+            self.__tamanho_arquivo = len(lista[0])
         else:
             self.__erro1.config(text="Insira um diretório válido!")
             self.__janela.after(4000, self.troca, 2)
             return
 
         if self.__quick_sort.get():
-            from CodigosOrdenacao.QuickSort import quicksort
+            from CodigosOrdenacao.QuickSort import QuickSort
+            # quick sort usa a variavel lista que acabou de ser montada
+            quick = QuickSort()
             self.__begin = datetime.now()
-            quicksort(lista[0], 0, len(lista[0])-1, lista[1])
+            quick.quicksort(lista[0], 0, len(lista[0])-1, lista[1])
             self.__end = datetime.now()
             self.__tempo_qs = self.__end - self.__begin
+            # salvar o numero de trocas e comparacoes no dicionario
+            trocas_comparacoes["quick"] = [quick.trocas, quick.comparacoes]
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
                 self.salvar(lista[0])
-
-            # Implementar o retorno visual ao cliente
-            # limpar a tela do tkinter
 
         if self.__merge_sort.get():
             from CodigosOrdenacao.mergesort import MergeSort
@@ -79,13 +117,12 @@ class Janelita:
             merge.merge_sort(lista[0], lista[1])
             self.__end = datetime.now()
             self.__tempo_ms = self.__end - self.__begin
-
+            # salvar o numero de trocas e comparacoes no dicionario
+            trocas_comparacoes["merge"] = [merge.trocas, merge.comparacoes]
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
                 self.salvar(lista[0])
-
-            # Implementar o retorno visual ao cliente
 
         if self.__insert_sort.get():
             from CodigosOrdenacao.InsertionSort import insertion_sort
@@ -95,14 +132,14 @@ class Janelita:
             tupla = insertion_sort(lista[0], lista[1])
             self.__end = datetime.now()
             self.__tempo_is = self.__end - self.__begin
+            # salvar o numero de trocas e comparacoes no dicionario
+            trocas_comparacoes["insertion"] = [tupla[1], tupla[2]]
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
                 self.salvar(tupla[0])
 
-            # Implementar o retorno visual ao cliente
-
-        # retornar a variavel para o estado original a fim de conseguir fazer outro salvamento
+        self.janela_de_informacoes(trocas_comparacoes)
         self.__ja_salvou = False
 
     def __init__(self):
@@ -112,6 +149,7 @@ class Janelita:
         self.__diretorio_carregamento = tkinter.StringVar()
         self.__deseja_salvar = tkinter.IntVar()
         self.__diretorio_salvamento = tkinter.StringVar()
+        self.__tamanho_arquivo = int
 
         # controle de salvamento para evitar salvar varias vezes:
         self.__ja_salvou = False
