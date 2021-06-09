@@ -70,13 +70,15 @@ class Janelita:
             # limpar a tela do tkinter
 
         if self.__merge_sort.get():
-            from CodigosOrdenacao.mergesort import merge_sort
+            from CodigosOrdenacao.mergesort import MergeSort
             # recuperar a lista original
             lista = organizarEmSublistas(path)
+            merge = MergeSort()
             self.__begin = datetime.now()
-            merge_sort(lista[0], lista[1])
+            merge.merge_sort(lista[0], lista[1])
             self.__end = datetime.now()
             self.__tempo_ms = self.__end - self.__begin
+
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
@@ -140,11 +142,14 @@ class Janelita:
 
         ttk.Label(self.__janela, text="").grid(row=3, column=0, padx=10, pady=10)
         ttk.Label(self.__janela, text="\tSelecione quais métodos de ordenação deseja:").grid(row=4, column=0,
-                                                                                      padx=10, pady=10)
+                                                                                             padx=10, pady=10)
 
-        ttk.Checkbutton(self.__janela, text="QuickSort    ", variable=self.__quick_sort).grid(row=5, column=0, padx=10, pady=10)
-        ttk.Checkbutton(self.__janela, text="MergeSort    ", variable=self.__merge_sort).grid(row=5, column=1, padx=10, pady=10)
-        ttk.Checkbutton(self.__janela, text="InsertionSort", variable=self.__insert_sort).grid(row=7, column=0, padx=10, pady=10)
+        ttk.Checkbutton(self.__janela, text="QuickSort    ", variable=self.__quick_sort).grid(row=5, column=0,
+                                                                                              padx=10, pady=10)
+        ttk.Checkbutton(self.__janela, text="MergeSort    ", variable=self.__merge_sort).grid(row=5, column=1,
+                                                                                              padx=10, pady=10)
+        ttk.Checkbutton(self.__janela, text="InsertionSort", variable=self.__insert_sort).grid(row=7, column=0,
+                                                                                               padx=10, pady=10)
 
         self.__erro2 = ttk.Label(self.__janela, text="")
         self.__erro2.grid(row=8, column=0, padx=10, pady=10)
