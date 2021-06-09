@@ -3,8 +3,6 @@ from Ferramentas.verificaOrdem import verificar
 from Ferramentas.ArquivoToList import organizarEmSublistas
 from os import getcwd, chdir
 
-comparacoes = 0
-trocas = 0
 
 class QuickSort:
 
@@ -22,7 +20,6 @@ class QuickSort:
             return segundo
         else:
             return terceiro
-
 
     def particao(self,Array, esquerda, direita, indice_score):
         # Seleção do pivô. O pivô será o elemento A[esquerda].
@@ -62,8 +59,7 @@ class QuickSort:
         # j é o índice em que o pivo agora está.
         return j
 
-
-    def quicksort(self,Array, esquerda, direita, indice_score=2):
+    def quicksort(self, Array, esquerda, direita, indice_score=2):
         inicio = datetime.now()
         if esquerda >= direita:
             return
@@ -80,12 +76,12 @@ class QuickSort:
         fim = datetime.now()
         self.tempo_exec = fim - inicio
 
+
 if __name__ == '__main__':
     testequicksort = QuickSort()
     chdir("..")
     lista = organizarEmSublistas(getcwd()+'/data_generation/desordenado/desordenado1.dat')
     testequicksort.quicksort(lista[0], 0, len(lista[0])-1, lista[1])
-
 
     print("Lista organizada?:", verificar(lista[0], lista[1]))
     print("Trocas:", testequicksort.trocas)

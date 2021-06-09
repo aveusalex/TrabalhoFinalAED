@@ -45,6 +45,7 @@ class Janelita:
     def ordenar(self):
         from Ferramentas.ArquivoToList import organizarEmSublistas
         from datetime import datetime
+        trocas_comparacoes = {"quick": [int, int], "merge": [int, int], "insertion": [int, int]}
 
         # verifica se o diretorio é válido.
         path = self.__diretorio_carregamento.get()
