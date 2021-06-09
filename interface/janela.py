@@ -4,7 +4,7 @@ from tkinter import ttk
 
 class Janelita:
 
-    def janela_de_informacoes(self, info:dict):
+    def janela_de_informacoes(self, info: dict):
         janela2 = tkinter.Tk()
 
         janela2.title("Informações")
