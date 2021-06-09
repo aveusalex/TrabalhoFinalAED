@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6931a1a6-e6ea-4607-8779-37c3f9f643b3" name="Default Changelist" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodigosOrdenacao/QuickSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/CodigosOrdenacao/QuickSort.py" afterDir="false" />
-    </list>
+    <list default="true" id="6931a1a6-e6ea-4607-8779-37c3f9f643b3" name="Default Changelist" comment="." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +170,7 @@
       <workItem from="1623097361287" duration="63000" />
       <workItem from="1623101095153" duration="5312000" />
       <workItem from="1623197825281" duration="4032000" />
-      <workItem from="1623203424690" duration="376000" />
+      <workItem from="1623203424690" duration="688000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizado">
       <created>1623084855132</created>
@@ -203,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623203495501</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <created>1623204104973</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623204104973</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +232,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSort.coverage" NAME="QuickSort Coverage Results" MODIFIED="1623203685935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
+    <SUITE FILE_PATH="coverage/TrabalhoFinalAED$QuickSort.coverage" NAME="QuickSort Coverage Results" MODIFIED="1623204083337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$ArquivoToList.coverage" NAME="ArquivoToList Coverage Results" MODIFIED="1623103966132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ferramentas" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$mergesort.coverage" NAME="mergesort Coverage Results" MODIFIED="1623105614183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
     <SUITE FILE_PATH="coverage/TrabalhoFinalAED$Insertion_Sort.coverage" NAME="Insertion Sort Coverage Results" MODIFIED="1623105512283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodigosOrdenacao" />
