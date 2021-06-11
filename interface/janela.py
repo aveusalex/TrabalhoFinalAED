@@ -50,7 +50,6 @@ class Janelita:
             ttk.Label(janela2, text=f"Comparações: {info['insertion'][1]}").grid(row=4, column=4)
             ttk.Label(janela2, text=f"Tempo corrido: {self.__tempo_is}").grid(row=5, column=4)
 
-
     def salvar(self, lista):
         self.__ja_salvou = True
         lista_aux = lista[::-1]
@@ -70,6 +69,8 @@ class Janelita:
             self.__erro2.config(text="")
         elif info == 2:
             self.__erro1.config(text="")
+        elif info == 3:
+            self.__erro3.config(text="")
 
     def check(self):
         valida1 = self.__insert_sort.get()
@@ -104,12 +105,12 @@ class Janelita:
             return
 
         # verifica se o número de clientes a serem visualizados é válido
-        '''if aux_n_clientes is int:
+        if int(self.__n_clientes.get()) > 0:
             pass
         else:
-            self.__erro3.config(text="Insira um número inteiro!")
-            self.__janela.after(4000,self.troca,2)
-            return'''
+            self.__erro3.config(text="Insira um número maior que zero!")
+            self.__janela.after(4000, self.troca, 3)
+            return
 
         if self.__quick_sort.get():
             from CodigosOrdenacao.QuickSort import QuickSort
@@ -124,7 +125,11 @@ class Janelita:
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
-                self.salvar(lista[0])
+                try:
+                    self.salvar(lista[0])
+                except:
+                    print("Não foi salvo por erro de diretório!")
+                    self.__ja_salvou = False
 
         if self.__merge_sort.get():
             from CodigosOrdenacao.mergesort import MergeSort
@@ -140,8 +145,11 @@ class Janelita:
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
-                self.salvar(lista[0])
-
+                try:
+                    self.salvar(lista[0])
+                except:
+                    print("Não foi salvo por erro de diretório!")
+                    self.__ja_salvou = False
 
         if self.__insert_sort.get():
             from CodigosOrdenacao.InsertionSort import insertion_sort
@@ -156,12 +164,14 @@ class Janelita:
 
             # salvar em um arquivo:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
-                self.salvar(tupla[0])
+                try:
+                    self.salvar(lista[0])
+                except:
+                    print("Não foi salvo por erro de diretório!")
+                    self.__ja_salvou = False
 
-
-        self.janela_de_informacoes(trocas_comparacoes)
         self.__ja_salvou = False
-
+        self.janela_de_informacoes(trocas_comparacoes)
 
     def __init__(self):
         self.__janela = tkinter.Tk()
@@ -171,6 +181,7 @@ class Janelita:
         self.__deseja_salvar = tkinter.IntVar()
         self.__diretorio_salvamento = tkinter.StringVar()
         self.__n_clientes = tkinter.StringVar()
+        self.__tamanho_arquivo = int
         # controle de salvamento para evitar salvar varias vezes:
         self.__ja_salvou = False
 
@@ -189,7 +200,8 @@ class Janelita:
         self.__end = 0
 
         ttk.Label(self.__janela, text="Diretório do dataset a ordenar: ").grid(row=0, column=0, padx=10, pady=10)
-        ttk.Label(self.__janela, text="Diretório da base de salvamento: ").grid(row=2, column=0, padx=10, pady=10)
+        ttk.Label(self.__janela, text="Diretório de salvamento com nome"
+                                      " para criar arquivo txt: ").grid(row=2, column=0, padx=10, pady=10)
         self.__erro1 = ttk.Label(self.__janela, text="")
         self.__erro1.grid(row=1, column=1, padx=10, pady=10)
 
@@ -210,20 +222,16 @@ class Janelita:
         ttk.Checkbutton(self.__janela, text="InsertionSort", variable=self.__insert_sort).grid(row=7, column=0,
                                                                                                padx=10, pady=10)
 
-        ttk.Label(self.__janela, text="Digite o número de clientes com o melhor SCORE que deseja visualizar: ").grid(row=8, column=0, padx=10, pady=10)
+        ttk.Label(self.__janela, text="Digite o número de clientes com o melhor\n"
+                                      "SCORE que deseja visualizar: ").grid(row=8, column=0, padx=10, pady=10)
         ttk.Entry(self.__janela, textvariable=self.__n_clientes).grid(row=8, column=1, padx=10, pady=10)
         self.__erro3 = ttk.Label(self.__janela, text="")
-        self.__erro3.grid(row=7, column=1, padx=10, pady=10)
-
+        self.__erro3.grid(row=9, column=1, padx=10, pady=10)
 
         self.__erro2 = ttk.Label(self.__janela, text="")
         self.__erro2.grid(row=9, column=0, padx=10, pady=10)
 
-        ttk.Button(self.__janela, text='Ordenar!', command=self.check).grid(row=9, column=0, padx=10, pady=10)
-        ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=9, column=1, padx=10, pady=10)
+        ttk.Button(self.__janela, text='Ordenar!', command=self.check).grid(row=10, column=0, padx=10, pady=10)
+        ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=10, column=1, padx=10, pady=10)
 
         self.__janela.mainloop()
-
-
-if __name__ == '__main__':
-    Janelita()
