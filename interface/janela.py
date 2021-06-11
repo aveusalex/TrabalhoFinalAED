@@ -3,7 +3,6 @@ import tkinter
 from tkinter import ttk
 from sys import setrecursionlimit
 
-aux_n_clientes = 0
 
 setrecursionlimit(10**9)
 
@@ -64,6 +63,7 @@ class Janelita:
                     else:
                         elemento[aux] = unidade + "\n"
                     aux += 1
+                file.writelines(elemento)
 
     def troca(self, info):
         if info == 1:
@@ -170,7 +170,7 @@ class Janelita:
         self.__diretorio_carregamento = tkinter.StringVar()
         self.__deseja_salvar = tkinter.IntVar()
         self.__diretorio_salvamento = tkinter.StringVar()
-        self.__n_clientes = tkinter.IntVar()
+        self.__n_clientes = tkinter.StringVar()
         # controle de salvamento para evitar salvar varias vezes:
         self.__ja_salvou = False
 
