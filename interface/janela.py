@@ -3,6 +3,7 @@ import tkinter
 from tkinter import ttk
 from sys import setrecursionlimit
 
+aux_n_clientes = 0
 
 setrecursionlimit(10**9)
 
@@ -50,11 +51,12 @@ class Janelita:
             ttk.Label(janela2, text=f"Comparações: {info['insertion'][1]}").grid(row=4, column=4)
             ttk.Label(janela2, text=f"Tempo corrido: {self.__tempo_is}").grid(row=5, column=4)
 
+
     def salvar(self, lista):
         self.__ja_salvou = True
-
+        lista_aux = lista[::-1]
         with open(self.__diretorio_salvamento.get(), "w") as file:
-            for elemento in lista:
+            for elemento in lista_aux[:aux_n_clientes]:
                 aux = 0
                 for unidade in elemento:
                     if not(aux == len(elemento)-1):
@@ -62,8 +64,6 @@ class Janelita:
                     else:
                         elemento[aux] = unidade + "\n"
                     aux += 1
-
-                file.writelines(elemento)
 
     def troca(self, info):
         if info == 1:
@@ -103,6 +103,14 @@ class Janelita:
             self.__janela.after(4000, self.troca, 2)
             return
 
+        # verifica se o número de clientes a serem visualizados é válido
+        '''if aux_n_clientes is int:
+            pass
+        else:
+            self.__erro3.config(text="Insira um número inteiro!")
+            self.__janela.after(4000,self.troca,2)
+            return'''
+
         if self.__quick_sort.get():
             from CodigosOrdenacao.QuickSort import QuickSort
             # quick sort usa a variavel lista que acabou de ser montada
@@ -134,6 +142,7 @@ class Janelita:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
                 self.salvar(lista[0])
 
+
         if self.__insert_sort.get():
             from CodigosOrdenacao.InsertionSort import insertion_sort
             # recuperar a lista original
@@ -149,8 +158,10 @@ class Janelita:
             if self.__deseja_salvar.get() and not self.__ja_salvou:
                 self.salvar(tupla[0])
 
+
         self.janela_de_informacoes(trocas_comparacoes)
         self.__ja_salvou = False
+
 
     def __init__(self):
         self.__janela = tkinter.Tk()
@@ -159,8 +170,7 @@ class Janelita:
         self.__diretorio_carregamento = tkinter.StringVar()
         self.__deseja_salvar = tkinter.IntVar()
         self.__diretorio_salvamento = tkinter.StringVar()
-        self.__tamanho_arquivo = int
-
+        self.__n_clientes = tkinter.IntVar()
         # controle de salvamento para evitar salvar varias vezes:
         self.__ja_salvou = False
 
@@ -200,8 +210,15 @@ class Janelita:
         ttk.Checkbutton(self.__janela, text="InsertionSort", variable=self.__insert_sort).grid(row=7, column=0,
                                                                                                padx=10, pady=10)
 
+        ttk.Label(self.__janela, text="Digite o número de clientes com o melhor SCORE que deseja visualizar: ").grid(row=8, column=0, padx=10, pady=10)
+        ttk.Entry(self.__janela, textvariable=self.__n_clientes).grid(row=8, column=1, padx=10, pady=10)
+        self.__erro3 = ttk.Label(self.__janela, text="")
+        self.__erro3.grid(row=7, column=1, padx=10, pady=10)
+        aux_n_clientes = self.__n_clientes.get()
+        print(aux_n_clientes)
+
         self.__erro2 = ttk.Label(self.__janela, text="")
-        self.__erro2.grid(row=8, column=0, padx=10, pady=10)
+        self.__erro2.grid(row=9, column=0, padx=10, pady=10)
 
         ttk.Button(self.__janela, text='Ordenar!', command=self.check).grid(row=9, column=0, padx=10, pady=10)
         ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=9, column=1, padx=10, pady=10)
