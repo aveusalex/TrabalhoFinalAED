@@ -224,7 +224,3 @@ class Janelita:
         ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=9, column=1, padx=10, pady=10)
 
         self.__janela.mainloop()
-
-
-if __name__ == '__main__':
-    Janelita()
