@@ -105,12 +105,13 @@ class Janelita:
             return
 
         # verifica se o número de clientes a serem visualizados é válido
-        if int(self.__n_clientes.get()) > 0:
-            pass
-        else:
-            self.__erro3.config(text="Insira um número maior que zero!")
-            self.__janela.after(4000, self.troca, 3)
-            return
+        if self.__deseja_salvar.get():
+            if int(self.__n_clientes.get()) > 0:
+                pass
+            else:
+                self.__erro3.config(text="Insira um número maior que zero!")
+                self.__janela.after(4000, self.troca, 3)
+                return
 
         if self.__quick_sort.get():
             from CodigosOrdenacao.QuickSort import QuickSort
