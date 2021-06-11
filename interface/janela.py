@@ -56,7 +56,7 @@ class Janelita:
         self.__ja_salvou = True
         lista_aux = lista[::-1]
         with open(self.__diretorio_salvamento.get(), "w") as file:
-            for elemento in lista_aux[:aux_n_clientes]:
+            for elemento in lista_aux[:int(self.__n_clientes.get())]:
                 aux = 0
                 for unidade in elemento:
                     if not(aux == len(elemento)-1):
@@ -214,8 +214,7 @@ class Janelita:
         ttk.Entry(self.__janela, textvariable=self.__n_clientes).grid(row=8, column=1, padx=10, pady=10)
         self.__erro3 = ttk.Label(self.__janela, text="")
         self.__erro3.grid(row=7, column=1, padx=10, pady=10)
-        aux_n_clientes = self.__n_clientes.get()
-        print(aux_n_clientes)
+
 
         self.__erro2 = ttk.Label(self.__janela, text="")
         self.__erro2.grid(row=9, column=0, padx=10, pady=10)
@@ -224,3 +223,7 @@ class Janelita:
         ttk.Button(self.__janela, text='Cancelar', command=self.__janela.quit).grid(row=9, column=1, padx=10, pady=10)
 
         self.__janela.mainloop()
+
+
+if __name__ == '__main__':
+    Janelita()
