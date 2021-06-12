@@ -3,4 +3,4 @@ Esse repositório pertence ao projeto final da disciplina de Algoritmos e Estrut
 
 Equipe: Heloisy Rodrigues
         Alex Echeverria
-        Julierme
+        Julierme Alves
